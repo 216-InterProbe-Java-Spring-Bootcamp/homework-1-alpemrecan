@@ -26,10 +26,10 @@ public class ProductComment {
     @Temporal(TemporalType.DATE)
     private Date commentDate;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCT", value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "PRODUCT_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_PRODUCT", value = ConstraintMode.CONSTRAINT))
     private Product product;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_USER", value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_CUSTOMER", value = ConstraintMode.CONSTRAINT))
     private Customer customer;
 
 }

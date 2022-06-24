@@ -33,7 +33,7 @@ public class Product {
     private Date expirationDate;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "product")
     private List<ProductComment> productComments;
 
 
