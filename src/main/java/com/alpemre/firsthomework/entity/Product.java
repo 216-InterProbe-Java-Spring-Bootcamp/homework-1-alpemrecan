@@ -8,7 +8,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -18,7 +19,7 @@ import java.util.List;
 public class Product {
 
     @Id
-    @GeneratedValue(generator = "Product")
+    @GeneratedValue(generator = "Product",strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "Product", sequenceName = "PRODUCT_ID_SEQ")
     private Long id;
 
@@ -34,7 +35,7 @@ public class Product {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "product")
-    private List<ProductComment> productComments;
+    private Set<ProductComment> productComments = new HashSet<>();
 
 
 }

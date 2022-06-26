@@ -13,7 +13,9 @@ public interface Productdao extends JpaRepository<Product,Long> {
 
 
 
-    List<Product> findAllByExpirationDateAfter(Date date);
+    List<Product> findAllByExpirationDateIsGreaterThanEqualOrExpirationDateIsNull(Date date);
+
+
 
 
 }

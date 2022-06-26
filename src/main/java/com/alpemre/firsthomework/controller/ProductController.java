@@ -26,16 +26,16 @@ public class ProductController {
         return productdao.findAll();
     }
 
-    @GetMapping("/expirationDate")
+    @GetMapping("/expirationDates")
     public List<Product>findAllByExpirationDateLessThan(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
         return productdao.findAllByExpirationDateLessThan(date);
 
     }
 
-    @GetMapping("/expirationsDate")
+    @GetMapping("/ExpirationDatesGreaterThanEqual")
 
-    public List<Product>findAllByExpirationDateAfter(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date date){
-        return productdao.findAllByExpirationDateAfter(date);
+    public List<Product>ExpirationDateGreaterThanEqual(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date date){
+        return productdao.findAllByExpirationDateIsGreaterThanEqualOrExpirationDateIsNull(date);
     }
 
 }

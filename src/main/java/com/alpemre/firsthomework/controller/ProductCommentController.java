@@ -45,5 +45,12 @@ public class ProductCommentController {
         return productCommentdao.findAllByProduct_IdAndCommentDateBetween(productid, datestart, dateend);
     }
 
+    @GetMapping("/Usersproductcommentdate")
+    public List<ProductComment> findAllByCustomer_IdAndCommentDateBetween(@RequestParam Long customerId,
+                                                                         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date datestart,
+                                                                         @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateend) {
 
+        return productCommentdao.findAllByCustomer_IdAndCommentDateBetween(customerId, datestart, dateend);
+
+    }
 }

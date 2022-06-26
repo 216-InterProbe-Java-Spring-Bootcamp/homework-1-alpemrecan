@@ -8,14 +8,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "PRODUCT_COMMENT")
+@Table(name = "PRODUCT_COMMENTS")
 @Getter
 @Setter
 
 public class ProductComment {
 
     @Id
-    @GeneratedValue(generator = "ProductComment")
+    @GeneratedValue(generator = "ProductComment",strategy =GenerationType.SEQUENCE)
     @SequenceGenerator(name = "ProductComment", sequenceName = "PRODUCT_COMMENT_ID_SEQ")
     private Long id;
 
@@ -25,11 +25,15 @@ public class ProductComment {
     @Column(name = "COMMENT_DATE")
     @Temporal(TemporalType.DATE)
     private Date commentDate;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_PRODUCT", value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "PRODUCT_ID", nullable = false,
+            foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_PRODUCT", value = ConstraintMode.CONSTRAINT))
     private Product product;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "CUSTOMER_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_CUSTOMER", value = ConstraintMode.CONSTRAINT))
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false,
+            foreignKey = @ForeignKey(name = "FK_PRODUCT_COMMENT_CUSTOMER", value = ConstraintMode.CONSTRAINT))
     private Customer customer;
 
 }
